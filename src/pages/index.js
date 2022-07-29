@@ -32,12 +32,7 @@ const Home = ({ data }) => {
                   .gatsbyImageData
               }
               alt={article.field_image.alt}
-              summary={
-                article.body.summary
-                  ? article.body.summary
-                  : article.body.processed.substring(0, 300)
-              }
-              tags={article.relationships.field_tags}
+              summary={article.body.processed.substring(0, 300)}
             />
           ))}
         </Container>
@@ -55,7 +50,6 @@ export const pageQuery = graphql`
         created
         body {
           processed
-          summary
         }
         path {
           alias
@@ -70,10 +64,6 @@ export const pageQuery = graphql`
                 gatsbyImageData(width: 600)
               }
             }
-          }
-          field_tags {
-            id
-            name
           }
         }
       }

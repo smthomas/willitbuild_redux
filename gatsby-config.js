@@ -25,12 +25,7 @@ module.exports = {
       resolve: `gatsby-source-drupal`,
       options: {
         baseUrl: process.env.DRUPAL_URL,
-        apiBase: process.env.DRUPAL_ENDPOINT,
-        basicAuth: {
-          username: process.env.BASIC_AUTH_USERNAME,
-          password: process.env.BASIC_AUTH_PASSWORD,
-        },
-        fastBuilds: true,
+        // fastBuilds: true,
         filters: {
           // collection : filter
           "file--file": "filter[status][value]=1",

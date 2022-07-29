@@ -15,7 +15,7 @@ import {
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
-const ArticlePreview = ({ title, path, image, alt, summary, tags }) => (
+const ArticlePreview = ({ title, path, image, alt, summary }) => (
   <Box as="section" bg={mode("gray.50", "inherit")} py="24">
     <Box maxW={{ base: "xl", md: "7xl" }} mx="auto" px={{ base: "6", md: "8" }}>
       <Grid
@@ -56,15 +56,6 @@ const ArticlePreview = ({ title, path, image, alt, summary, tags }) => (
               <Badge colorScheme="blue" variant="solid" alignSelf="flex-start">
                 Article
               </Badge>
-              <HStack
-                divider={<StackDivider h="3" alignSelf="center" />}
-                spacing="3"
-                color={mode("gray.600", "gray.400")}
-              >
-               {tags.map((tag) =>  (
-                <Box key={tag.id}>{tag.name}</Box>
-               ))}
-              </HStack>
             </Stack>
             <Link to={`/articles${path}`}>
               <Heading size="xl" mt="6" mb="4">
