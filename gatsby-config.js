@@ -26,7 +26,7 @@ module.exports = {
       options: {
         baseUrl: process.env.DRUPAL_URL,
         skipFileDownloads: true,
-        // fastBuilds: true,
+        fastBuilds: true,
         filters: {
           // collection : filter
           "file--file": "filter[status][value]=1",
