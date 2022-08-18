@@ -1,15 +1,12 @@
 import React from "react";
-import {
-  Box,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Center, useColorModeValue } from "@chakra-ui/react";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Container from "../components/Container";
 //import Meta from "../components/Meta";
 import ArticlePreview from "../components/ArticlePreview";
 
-const Home = ({ data }) => {
+const Home = ({ data, serverData }) => {
   const articles = data.allNodeArticle.nodes;
 
   return (
@@ -33,6 +30,16 @@ const Home = ({ data }) => {
             />
           ))}
         </Container>
+      </Box>
+      <Box
+        p={30}
+        width={`100%`}
+        background={useColorModeValue(`gray.300`, `gray.500`)}
+        borderBottomWidth="1px"
+      >
+        <Center>
+          <img alt="Happy dog" src={serverData.message} />
+        </Center>
       </Box>
     </Layout>
   );
@@ -65,3 +72,21 @@ export const pageQuery = graphql`
 `;
 
 export default Home;
+
+export async function getServerData() {
+  try {
+    const res = await fetch(`https://dog.ceo/api/breeds/image/random`);
+    if (!res.ok) {
+      throw new Error(`Response failed`);
+    }
+    return {
+      props: await res.json(),
+    };
+  } catch (error) {
+    return {
+      status: 500,
+      headers: {},
+      props: {},
+    };
+  }
+}
