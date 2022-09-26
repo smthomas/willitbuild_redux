@@ -4,7 +4,7 @@
   </a>
 </p>
 <h1 align="center">
-  Gatsby minimal starter
+  Gatsby minimal starter. Testing accelerated Sourcing take 1
 </h1>
 
 ## 🚀 Quick start.
